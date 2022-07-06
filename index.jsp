@@ -10,7 +10,7 @@
   <%@ include file="filterComponent.jsp" %>
   <div class="container-fluid d-flex flex-wrap justify-content-between">
     <%
-      String query = String.format("SELECT * FROM ms_user U LEFT JOIN ms_user_chosen_job J ON U.UserId = J.UserId LEFT JOIN ms_job_type T ON J.JobTypeId = T.JobTypeId"); 
+      String query = String.format("SELECT * FROM ms_user U LEFT JOIN ms_user_chosen_job J ON U.UserId = J.UserId LEFT JOIN ms_job_type T ON J.JobTypeId = T.JobTypeId WHERE NOT (U.UserAccountType = 'Private') "); 
       String genderQuery = "";
       String jobQuery = "";
       
@@ -37,15 +37,16 @@
       }
       
       if(UserId != null){ 
-        query = String.format("SELECT * FROM ms_user U LEFT JOIN ms_user_chosen_job J ON U.UserId = J.UserId LEFT JOIN ms_job_type T ON J.JobTypeId = T.JobTypeId WHERE NOT U.UserId = (%d)", UserId); 
-        if(genderQuery.length() != 0){
-          query += " AND " + genderQuery;
-        }
-        if(jobQuery.length() != 0){
-          query += " AND " + jobQuery;
-        }
+        query = String.format("SELECT * FROM ms_user U LEFT JOIN ms_user_chosen_job J ON U.UserId = J.UserId LEFT JOIN ms_job_type T ON J.JobTypeId = T.JobTypeId WHERE NOT (U.UserAccountType = 'Private') AND NOT U.UserId = (%d)", UserId); 
 
-      }else {
+      }
+      if(genderQuery.length() != 0){
+          query += " AND " + genderQuery;
+      }
+      if(jobQuery.length() != 0){
+        query += " AND " + jobQuery;
+      }
+      /*else {
         if(genderQuery.length() != 0){
           query += " WHERE " + genderQuery;
         }
@@ -56,7 +57,7 @@
             query += " WHERE " + jobQuery;
           }
         }
-      }
+      }*/
 
       query += " GROUP BY U.UserId"; 
       rs = con.executeQuery(query); 

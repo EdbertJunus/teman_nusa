@@ -62,7 +62,7 @@
             }else{
           %>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Wallet</a>
+            <a class="nav-link" href="wallet.jsp">Wallet</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="setting.jsp">Settings</a>

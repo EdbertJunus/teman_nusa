@@ -23,3 +23,12 @@
 .thumb-icon > svg:hover {
   cursor: pointer;
 }
+
+.warning-msg {
+  display: none;
+  margin-top: 1rem;
+}
+
+.warning-msg.active {
+  display: block;
+}
