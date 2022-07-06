@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: black;
+  font-family: "Montserrat", sans-serif;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.navbar {
+  background-color: #00ffab;
+}
+
+/* .btn-primary {
+  background-color: #00ffab;
+  border-color: #00ffab;
+  color: black;
+} */
+/* 
+.btn-primary:active {
+  background-color: #b8f1b0;
+  border-color: #b8f1b0;
+} */
