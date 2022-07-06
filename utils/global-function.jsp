@@ -13,4 +13,14 @@
     }
     return newPrice;
   }
+
+  final Boolean findFromArray(String[] array, String search){
+    for(String string : array){
+      if(string.equals(search)){
+        return true;
+      }
+    }
+    return false;
+  }
+
 %>

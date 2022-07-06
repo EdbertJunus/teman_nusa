@@ -1,0 +1,25 @@
+.user-info {
+  border: 5px solid #14c38e;
+  border-radius: 14px;
+  padding: 4rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.user-info > img {
+  border: 5px solid #00ffab;
+  padding: 0.5rem 0.5rem 0rem 0.5rem;
+  border-radius: 999px;
+}
+
+.user-info-list {
+  padding: 0 5rem;
+}
+
+.user-info-list > .row > div > input {
+  text-align: right;
+}
+
+.thumb-icon > svg:hover {
+  cursor: pointer;
+}

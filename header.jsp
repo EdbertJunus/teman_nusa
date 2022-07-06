@@ -1,4 +1,5 @@
 <%@ include file="database/connect.jsp"%>
+<%@page import="java.util.*"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,6 +16,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/register-style.css" />
     <link rel="stylesheet" href="css/home-style.css" />
+    <link rel="stylesheet" href="css/user-style.css" />
   </head>
   <body>
     <%
@@ -31,17 +33,17 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">WishList</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Avatar Shop</a>
+            <a class="nav-link" href="index.jsp">Home</a>
           </li>
           <%
             if(UserId != null){
           %>
+          <li class="nav-item">
+            <a class="nav-link" href="wishlist.jsp">WishList</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Avatar Shop</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Collection Angels</a>
           </li>
@@ -63,7 +65,7 @@
             <a class="nav-link" href="#">Wallet</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Settings</a>
+            <a class="nav-link" href="setting.jsp">Settings</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="controller/logoutController.jsp">Log Out</a>

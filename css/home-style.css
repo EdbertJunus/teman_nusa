@@ -5,3 +5,20 @@
 .filter > .btn {
   background-color: #14c38e;
 }
+
+.job-type-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.job-type-group > .form-check {
+  margin-right: 1rem;
+}
+
+.filter > .dropdown-menu {
+  min-width: 35rem;
+}
+
+.home-card-item > img {
+  height: 290px;
+}

@@ -1,16 +1,19 @@
 <%@ include file="header.jsp" %> 
+
 <% 
   Connect con = Connect.getConnection();
   String[] jobTypeFilter = request.getParameterValues("jobType");
   String[] genderFilter = request.getParameterValues("gender");
   ResultSet rs;
+  
 %>
 <section class="container content align-items-start">
-  <h1 class="w-100 text-center">User List</h1>
+  <h1 class="w-100 text-center">My WishList</h1>
   <%@ include file="filterComponent.jsp" %>
   <div class="container-fluid d-flex flex-wrap justify-content-between">
     <%
-      String query = String.format("SELECT * FROM ms_user U LEFT JOIN ms_user_chosen_job J ON U.UserId = J.UserId LEFT JOIN ms_job_type T ON J.JobTypeId = T.JobTypeId"); 
+
+      String query = String.format("SELECT * FROM ms_user U LEFT JOIN ms_user_chosen_job J ON U.UserId = J.UserId LEFT JOIN ms_job_type T ON J.JobTypeId = T.JobTypeId LEFT JOIN ms_wishlist W ON U.UserId=W.FavoritedUserId WHERE W.UserId = (%d)", UserId); 
       String genderQuery = "";
       String jobQuery = "";
       
@@ -23,7 +26,7 @@
           }
         }
         genderQuery = "("+genderQuery+"))";
-      }
+      } 
 
       if(jobTypeFilter != null){
         jobQuery += "JobTypeName IN (";
@@ -35,36 +38,24 @@
         }
         jobQuery = "("+jobQuery+"))";
       }
-      
-      if(UserId != null){ 
-        query = String.format("SELECT * FROM ms_user U LEFT JOIN ms_user_chosen_job J ON U.UserId = J.UserId LEFT JOIN ms_job_type T ON J.JobTypeId = T.JobTypeId WHERE NOT U.UserId = (%d)", UserId); 
-        if(genderQuery.length() != 0){
-          query += " AND " + genderQuery;
-        }
-        if(jobQuery.length() != 0){
-          query += " AND " + jobQuery;
-        }
 
-      }else {
-        if(genderQuery.length() != 0){
-          query += " WHERE " + genderQuery;
-        }
-        if(jobQuery.length() != 0){
-          if(query.contains("WHERE")){
-            query += " AND " + jobQuery;
-          }else{
-            query += " WHERE " + jobQuery;
-          }
-        }
+
+      if(genderQuery.length() != 0){
+          query += (" AND " + genderQuery);
+      }
+      if(jobQuery.length() != 0){
+          query += " AND " + jobQuery;
       }
 
-      query += " GROUP BY U.UserId"; 
+        query += " GROUP BY U.UserId"; 
+
       rs = con.executeQuery(query); 
 
       ArrayList<Integer> userIdList = new ArrayList<Integer>();
       ArrayList<String> userProfileList = new ArrayList<String>();
       ArrayList<String> userNameList = new ArrayList<String>();
       ArrayList<String> userLinkedinList = new ArrayList<String>();
+
 
       while(rs.next()){ 
         userIdList.add(rs.getInt("UserId"));

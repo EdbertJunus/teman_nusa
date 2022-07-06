@@ -46,7 +46,7 @@
     if(UserJobType == null){
         response.sendRedirect("../register.jsp?err=Job Type must be filled");
         return;
-    }else if(UserJobType.length < 2){
+    }else if(UserJobType.length < 3){
         response.sendRedirect("../register.jsp?err=Job Type must be minimal 3");
         return;
     } 

@@ -4,6 +4,11 @@
   Integer max = 125000;
   Integer min = 100000;
   Integer registerPrice = new Random().nextInt((max-min)+1) + min;
+  
+  Connect con = Connect.getConnection();
+  String query_filter = String.format("SELECT * FROM ms_job_type"); 
+  ResultSet rs_filter = con.executeQuery(query_filter); 
+
 %>
 <section class="container content">
   <h1 class="page-title">Register Form</h1>
@@ -60,25 +65,23 @@
       </div>
       <div class="form-group">
         <label for="jobType">Job Type</label>
-        <div class="form-check">
-          <input
-            name="jobType"
-            class="form-check-input"
-            type="checkbox"
-            value="Web Design"
-            id="webDesign"
-          />
-          <label class="form-check-label" for="webDesign"> Web Design </label>
-        </div>
-        <div class="form-check">
-          <input
-            name="jobType"
-            class="form-check-input"
-            type="checkbox"
-            value="Web Prog"
-            id="webProg"
-          />
-          <label class="form-check-label" for="webProg"> Web Prog </label>
+        <div class="job-type-group w-100">
+          <%
+              while(rs_filter.next()){
+          %>
+            <div class="form-check">
+              <input
+                name="jobType"
+                class="form-check-input"
+                type="checkbox"
+                value="<%= rs_filter.getString("JobTypeName")%>"
+                id="JobType0<%= rs_filter.getInt("JobTypeId")%>"
+              />
+              <label class="form-check-label" for="JobType0<%= rs_filter.getInt("JobTypeId")%>"><%= rs_filter.getString("JobTypeName")%></label>
+            </div>
+          <%
+              }
+          %>
         </div>
       </div>
 

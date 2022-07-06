@@ -1,4 +1,5 @@
 <%@ include file="../database/connect.jsp" %>
+<%@page import="java.util.*"%>
 
 <%
     Integer payment = Integer.parseInt((String)request.getParameter("payment"));
@@ -20,10 +21,36 @@
 
     Integer surplus = payment - price;
 
-
     Connect con = Connect.getConnection();
-    String query_insert_user = String.format("INSERT INTO ms_user (UserFullName, UserGender, UserLinkedIn, UserHandphone, UserRegisterPrice, UserEmail, UserPassword, UserWalletBalance, UserAccountType) VALUES ('%s', '%s', '%s', '%s', %d, '%s', '%s', %d, '%s')", UserFullName, UserGender, UserLinkedIn, UserHandphone, price, UserEmail, UserPassword, surplus+100, "Public");
-    con.executeUpdate(query_insert_user);
+    //Insert User
+    String query_insert_user = String.format("INSERT INTO ms_user (UserFullName, UserGender, UserLinkedIn, UserHandphone, UserRegisterPrice, UserEmail, UserPassword, UserWalletBalance, UserAccountType, UserProfile) VALUES ('%s', '%s', '%s', '%s', %d, '%s', '%s', %d, '%s', '%s')", UserFullName, UserGender, UserLinkedIn, UserHandphone, price, UserEmail, UserPassword, surplus+100, "Public", "beruang.jpg");
+    ResultSet st = con.executeUpdate(query_insert_user).getGeneratedKeys();
+    st.next();
+    int UserId = st.getInt(1);
+
+    //Get UserJobType Id
+  
+    String query_job_type = "";
+    for(int i=0; i<UserJobType.length; i++){
+        query_job_type += "'" + UserJobType[i] + "'";
+        if(i != (UserJobType.length - 1)){
+            query_job_type += ",";
+        }
+    }
+    String query_jobType = String.format("SELECT * FROM ms_job_type WHERE JobTypeName IN (%s)", query_job_type);
+    ResultSet rs = con.executeQuery(query_jobType);
+    ArrayList<Integer> jobTypeIdList = new ArrayList<Integer>();
+
+    while(rs.next()){
+        jobTypeIdList.add(rs.getInt("JobTypeId"));
+    }
+    
+    //Insert User Chosen Job
+    String query_insert_user_chosen;
+    for(int i=0; i<jobTypeIdList.size(); i++){
+        query_insert_user_chosen = String.format("INSERT INTO ms_user_chosen_job (UserId, JobTypeId) VALUES (%d, %d)", UserId, jobTypeIdList.get(i));
+        con.executeUpdate(query_insert_user_chosen);
+    }
 
     session.removeAttribute("UserFullName");
     session.removeAttribute("UserEmail");
@@ -36,6 +63,6 @@
 
     session.removeAttribute("onGoingRandomPrice");
     
-    response.sendRedirect("../login.jsp");    
+    response.sendRedirect("../login.jsp");
 
 %>
