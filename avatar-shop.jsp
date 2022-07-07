@@ -1,6 +1,10 @@
 <%@ include file="header.jsp" %>
 
-<% 
+<%
+  if(UserId == null){
+    response.sendRedirect("login.jsp?err=Login first to access user detail"); 
+    return; 
+  } 
   Connect con = Connect.getConnection();
   ResultSet rs;
   

@@ -1,5 +1,6 @@
 .user-info,
-.chat-group {
+.chat-group,
+.video-group {
   border: 5px solid #14c38e;
   border-radius: 14px;
   padding: 4rem;
@@ -34,7 +35,8 @@
   display: block;
 }
 
-.chat-group {
+.chat-group,
+.video-group {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
@@ -56,4 +58,14 @@
 .chat-content {
   width: fit-content;
   padding: 0.5rem;
+}
+
+.choice-item {
+  font-size: 1.5rem;
+}
+
+.choice-item a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

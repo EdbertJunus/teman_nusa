@@ -34,7 +34,7 @@
     String UserFullName = rs.getString("UserFullName");
     Integer ReceiverId = rs.getInt("UserId");
     String friendProfile = rs.getString("UserProfile");
-
+    String Handphone = rs.getString("UserHandphone");
     
 %>
 <section class="container content">
@@ -78,7 +78,7 @@
         >
         <div class="col-sm-8 d-flex justify-content-end align-items-center">
           <p class="font-weight-normal m-0">
-            <%= rs.getString("UserHandphone")%>
+            <%= Handphone%>
           </p>
         </div>
       </div>
@@ -151,16 +151,6 @@
             <small class="m-0 <%= isSender ? "ml-5" : "mr-5"%>" text-muted d-flex align-items-end"><%= rs.getString("ChatDateTime")%></small>
           </div>
         </div>
-        <%-- <div class="chat-item align-items-end container-fluid">
-          <div class="row flex-row-reverse align-items-center">
-            <img src="..." class="img-thumbnail img-fluid rounded-circle" style="width:3rem;" alt="...">
-            <p class="m-0 mr-2">UserFull Name</p>
-          </div>
-          <div class="row flex-row-reverse mt-2 border rounded border bg-light text-dark chat-content">
-            <p class="m-0 ml-2 ">This is the chat</p>
-            <small class="m-0 mr-5 text-muted d-flex align-items-end">Date</small>
-          </div>
-        </div> --%>
         <%
           }
         %>
@@ -174,6 +164,23 @@
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+      </div>
+    </div>
+    <div class="container-fluid video-group">
+      <h5 class="w-100 text-center"> Video Call with <%= UserFullName%></h5>
+      <div class="video-group-choice">
+        <span class="choice-item">
+          <a href="https://wa.me/+62<%= Handphone.substring(1)%>" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <p class="text-primary m-0 ml-4">Via Whatsapp</p>
+          </a>
+        </span>
+        <span class="choice-item">
+          <a href="https://meet.google.com/" target="_blank">
+            <i class="fas fa-video"></i>
+            <p class="text-primary m-0 ml-4">Via Google Meet</p>
+          </a>
+        </span>
       </div>
     </div>
   <%
