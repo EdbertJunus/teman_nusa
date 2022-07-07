@@ -40,7 +40,7 @@
 <section class="container content">
   <input type="hidden" id="UserDetailId" value="<%= UserDetailId%>"/>
   <h1 class="w-100 text-center"><%= UserFullName%></h1>
-  <div class="container-fluid user-info">
+  <div class="container-fluid user-info flex-column flex-lg-row align-items-center align-items-lg-end">
     <img src="assets/<%= rs.getString("UserProfile")%>" class="img-fluid"
     alt="<%= UserFullName%>" style="width: 18rem" />
     <div class="container-fluid user-info-list">
@@ -129,6 +129,12 @@
           String chatUserName = "me";
           Boolean isSender = false;
           String imageUrl = "";
+
+	  if(!rs.isBeforeFirst()){
+		%>
+		<h5 class="text-info text-center">No Chat Yet</h5>
+		<%
+	  }
 
           while(rs.next()){
             if(rs.getInt("SenderId") == UserDetailId){

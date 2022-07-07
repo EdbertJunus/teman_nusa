@@ -68,7 +68,7 @@
     <h1 class="w-100 text-center">
         Avatar #<%= rs.getString("avatarId")%>
     </h1>
-    <div class="container-fluid avatar-detail">
+    <div class="container-fluid avatar-detail flex-column flex-lg-row align-items-center">
         <img src="<%= rs.getString("AvatarImageURL")%>" class="img-fluid"
         alt="<%= rs.getString("AvatarImageURL")%>" style="width: 32rem" />
         <div class="avatar-detail-info">
