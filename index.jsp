@@ -55,6 +55,14 @@
       ArrayList<String> userNameList = new ArrayList<String>();
       ArrayList<String> userLinkedinList = new ArrayList<String>();
 
+      if(!rs.isBeforeFirst()){
+          %>
+              <div class="w-100 text-center pt-5">
+                  <h2 class="text-info">No Users currently</h2>
+              </div>
+          <%
+      }
+
       while(rs.next()){ 
         userIdList.add(rs.getInt("UserId"));
         userProfileList.add(rs.getString("UserProfile"));

@@ -17,6 +17,14 @@
 
             rs = con.executeQuery(query); 
 
+            if(!rs.isBeforeFirst()){
+                %>
+                    <div class="w-100 text-center pt-5">
+                        <h2 class="text-info">No collections currently</h2>
+                    </div>
+                <%
+            }
+            
             while(rs.next()){   
         %>
                 <div class="card home-card-item mt-5" style="width: 18rem">

@@ -19,7 +19,7 @@
     }
 %>
 <section class="container content align-items-start">
-  <h1 class="w-100 text-center">User List</h1>
+  <h1 class="w-100 text-center"><%= rs.getString("UserFullName")%></h1>
     <div class="container-fluid user-info">
         <img src="assets/<%= rs.getString("UserProfile")%>" class="img-fluid" alt="<%= rs.getString("UserFullName")%>" style="width: 18rem; height: fit-content;" />
         <div class="container-fluid user-info-list">
