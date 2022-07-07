@@ -77,7 +77,7 @@
       for(int i=0; i<userIdList.size(); i++){
       %>
         <div class="card home-card-item mt-5" style="width: 18rem">
-          <a href="user-detail.jsp?userId=<%= userIdList.get(i)%>">
+          <a class="text-decoration-none" href="user-detail.jsp?userId=<%= userIdList.get(i)%>">
           <img src="assets/<%= userProfileList.get(i)%>" class="card-img-top"
           alt="<%= userNameList.get(i)%> Profile Pic">
           <div class="card-body d-flex flex-column justify-content-between">

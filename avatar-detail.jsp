@@ -31,7 +31,7 @@
     }
 
     //Find User that does not have this avatar
-    query = String.format("SELECT * from  ms_user U LEFT JOIN ms_user_avatar_collection C ON C.UserId = U.UserId WHERE U.UserId NOT  IN (SELECT UserId from  ms_user_avatar_collection WHERE AvatarId = (%d))", avatarId);
+    query = String.format("SELECT * from  ms_user U LEFT JOIN ms_user_avatar_collection C ON C.UserId = U.UserId WHERE U.UserId NOT  IN (SELECT UserId from  ms_user_avatar_collection WHERE AvatarId = (%d)) GROUP BY U.UserId", avatarId);
     rs = con.executeQuery(query);
 
     ArrayList<Integer> userIdList = new ArrayList<Integer>();
@@ -98,6 +98,9 @@
                 }else{
             %>
             <h4 class="text-info">You have the avatar already</h4>
+            <%  
+                if(receiverNameList.size() != 0){
+            %>
             <div class="bg-light p-3 my-2">
                 <p class="text-dark">You have ever given this gift to: </p>
                 <div class="overflow-auto" style="height: 5rem;">
@@ -110,6 +113,9 @@
                 %>
                 </div>
             </div>
+            <%
+                }
+            %>
             <%
                 if(senderName.length() != 0){
                     %>

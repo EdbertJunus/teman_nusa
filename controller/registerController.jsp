@@ -17,23 +17,32 @@
     Connect con = Connect.getConnection();
     String query;
     ResultSet rs;
+
+    session.setAttribute("UserFullName", UserFullName);
+    session.setAttribute("UserEmail", UserEmail);
+    session.setAttribute("UserLinkedIn", UserLinkedIn);
+    session.setAttribute("UserHandphone", UserHandphone);
     
     if(UserFullName.length() == 0){
         response.sendRedirect("../register.jsp?err=Full Name must be filled");
+        session.removeAttribute("UserFullName");
         return;
     }else if(UserFullName.length() < 3){
         response.sendRedirect("../register.jsp?err=Full Name must minimal contain 3 characters");
+        session.removeAttribute("UserFullName");
         return;
     }
     
     if(UserEmail.length() == 0){
         response.sendRedirect("../register.jsp?err=Email must be filled");
+        session.removeAttribute("UserEmail");
         return;
     }else {
         query = String.format("SELECT * FROM ms_user WHERE UserEmail = ('%s')", UserEmail);
         rs = con.executeQuery(query);
         if(rs.next()){
             response.sendRedirect("../register.jsp?err=Full User with this email already exist");
+            session.removeAttribute("UserEmail");
             return;
         }
     }
@@ -53,23 +62,29 @@
 
     if(UserLinkedIn.length() == 0){
         response.sendRedirect("../register.jsp?err=LinkedIn must be filled");
+        session.removeAttribute("UserLinkedIn");
         return;
     }else if(UserLinkedIn.indexOf("https://www.linkedin.com/in/") == -1){
         response.sendRedirect("../register.jsp?err=LinkedIn must be in this format https://www.linkedin.com/in/<username>");
+        session.removeAttribute("UserLinkedIn");
         return;
     }else if(UserLinkedIn.equals("https://www.linkedin.com/in/")){
         response.sendRedirect("../register.jsp?err=LinkedIn must be in this format https://www.linkedin.com/in/<username>");
+        session.removeAttribute("UserLinkedIn");
         return;
     }
     
     if(UserHandphone.length() == 0){
         response.sendRedirect("../register.jsp?err=Handphone must be filled");
+        session.removeAttribute("UserHandphone");
         return;
     }else if(UserHandphone.length() > 13 || UserHandphone.length() < 10){
         response.sendRedirect("../register.jsp?err=Handphone length must be between 10 and 13");
+        session.removeAttribute("UserHandphone");
         return;
     }else if(!UserHandphone.matches("[0-9]+")){
         response.sendRedirect("../register.jsp?err=Handphone must only contain numbers");
+        session.removeAttribute("UserHandphone");
         return;
     }
 

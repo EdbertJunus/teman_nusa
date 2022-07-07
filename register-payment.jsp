@@ -61,6 +61,7 @@
                     name="payment"
                     value="<%= UserMemberPrice%>"
                     required
+                    max="125000"
                     />
                 <input type="hidden" id="price" name="price" value="<%= price%>" />
             </div>

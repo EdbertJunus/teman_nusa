@@ -9,6 +9,16 @@
   String query_filter = String.format("SELECT * FROM ms_job_type"); 
   ResultSet rs_filter = con.executeQuery(query_filter); 
 
+  String UserFullName = (String)session.getAttribute("UserFullName");
+  String UserEmail =  (String)session.getAttribute("UserEmail");
+  String UserLinkedIn =  (String)session.getAttribute("UserLinkedIn");
+  String UserHandphone =  (String)session.getAttribute("UserHandphone");
+
+  UserFullName = UserFullName == null ? "" : UserFullName;
+  UserEmail = UserEmail == null ? "" : UserEmail;
+  UserLinkedIn = UserLinkedIn == null ? "" : UserLinkedIn;
+  UserHandphone = UserHandphone == null ? "" : UserHandphone;
+
 %>
 <section class="container content">
   <h1 class="page-title">Register Form</h1>
@@ -26,6 +36,7 @@
           class="form-control"
           id="fullName"
           required
+          value="<%= UserFullName%>"
         />
       </div>
       <div class="form-group">
@@ -36,6 +47,7 @@
           class="form-control"
           id="email"
           required
+          value="<%= UserEmail%>"
         />
       </div>
       <div class="form-group">
@@ -92,6 +104,7 @@
           name="linkedIn"
           class="form-control"
           id="linkedIn"
+          value="<%= UserLinkedIn%>"
           required
         />
         <small id="linkedInInfo" class="form-text text-muted">
@@ -106,6 +119,7 @@
           class="form-control"
           id="handphone"
           required
+          value="<%= UserHandphone%>"
         />
       </div>
       <div class="form-group">
@@ -117,6 +131,7 @@
           aria-describedby="priceInfo"
           name="price"
           required
+          max="125000"
         />
         <small id="priceInfo" class="form-text text-muted">
           Register Price is <%= registerPrice%>
