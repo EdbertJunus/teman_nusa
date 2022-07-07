@@ -1,15 +1,15 @@
 <%@ include file="header.jsp" %>
 
 <% 
-  Connect con = Connect.getConnection();
-  ResultSet rs;
+    Connect con = Connect.getConnection();
+    ResultSet rs;
   
 %>
 <section class="container content align-items-start">
-  <h1 class="w-100 text-center">Avatar Shops</h1>
+  <h1 class="w-100 text-center">Collection Angels</h1>
   <div class="container-fluid d-flex flex-wrap flex-row justify-content-between">
         <%
-            String query = String.format("SELECT * FROM ms_avatar"); 
+            String query = String.format("SELECT * FROM ms_avatar A LEFT JOIN ms_user_avatar_collection AC ON A.AvatarId = AC.AvatarId WHERE AC.UserId = (%d) AND AC.SenderUserId IS NOT NULL", UserId); 
 
             rs = con.executeQuery(query); 
 

@@ -16,7 +16,33 @@
     query = String.format("SELECT * FROM ms_user_avatar_collection AC WHERE AC.AvatarId = (%d) AND AC.UserId = (%d)", avatarId, UserId);
     rs = con.executeQuery(query);
 
+    Integer senderId = 0;
+    String senderName = "";
+
     Boolean haveAvatar = rs.isBeforeFirst();
+    if(rs.next()){
+        senderId = rs.getInt("SenderUserId");
+    }
+
+    query = String.format("SELECT UserFullName from ms_user WHERE UserId = (%d)", senderId);
+    rs = con.executeQuery(query);
+    if(rs.next()){
+        senderName = rs.getString("UserFullName");
+    }
+
+    query = String.format("SELECT * from ms_user U LEFT JOIN ms_user_avatar_collection C ON U.UserId = C.UserId WHERE NOT U.UserId = (%d)", UserId);
+    rs = con.executeQuery(query);
+
+    ArrayList<Integer> userIdList = new ArrayList<Integer>();
+    ArrayList<String> userNameList = new ArrayList<String>();
+
+    while(rs.next()){
+        if(rs.getInt("AvatarId") != avatarId){
+            userIdList.add(rs.getInt("UserId"));
+            userNameList.add(rs.getString("UserFullName"));
+        }
+
+    } 
 
     query = String.format("SELECT * FROM ms_avatar WHERE AvatarId = (%d)", avatarId);
     rs = con.executeQuery(query); 
@@ -61,6 +87,35 @@
                 }else{
             %>
             <h4 class="text-info">You have the avatar already</h4>
+            <%
+                if(senderName.length() != 0){
+                    %>
+                        <p class="py-1 mb-5 text-info">Gift from <%= senderName%></p>
+                    <%
+                }
+            %>
+            <form name="giftForm" action="controller/avatarGiftController.jsp" method="post">
+                <input type="hidden" name="avatarId" value="<%= avatarId%>"/>
+                <button type="button" id="chg-acc-btn" class="btn btn-primary">Give Avatar to Friend</button>
+                <div class="confirmation-msg" id="confirmation-msg">
+                    <div class="form-group">
+                        <label for="giftFriendId">Friends Name</label>
+                        <select name="giftFriendId" id="giftFriendId" class="custom-select" required>
+                            <option selected disabled value="">Choose...</option>
+                            <%
+                                for(int i=0; i<userIdList.size(); i++){
+                            %>
+                                <option value="<%= userIdList.get(i)%>"><%= userNameList.get(i)%></option>
+                            <%
+                                }
+                            %>
+                        </select>
+                    </div>
+                    <p class="text-secondary">Are you sure you want to give this to your friend</p>
+                    <button class="btn btn-success btn-lg mb-2" type="submit">Yes</button>
+                    <a class="btn btn-danger btn-lg mb-2" href="#" id="chg-btn-no" role="button">No</a>
+                </div>
+            </form>
             <%
                 }
             %>

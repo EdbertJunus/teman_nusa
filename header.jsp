@@ -46,7 +46,7 @@
             <a class="nav-link" href="avatar-shop.jsp">Avatar Shop</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Collection Angels</a>
+            <a class="nav-link" href="collection-angels.jsp">Collection Angels</a>
           </li>
           <%
             }
