@@ -116,5 +116,37 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid own-avatar-group">
+        <h5 class="w-100 text-center mb-5">My Own Avatar</h5>
+        <div class="container-fluid d-flex flex-wrap flex-row justify-content-between">
+            <%
+                query = String.format("SELECT * FROM ms_avatar A LEFT JOIN ms_user_avatar_collection AC ON A.AvatarId = AC.AvatarId WHERE AC.UserId = (%d)", UserId); 
+    
+                rs = con.executeQuery(query); 
+    
+                if(!rs.isBeforeFirst()){
+                    %>
+                        <div class="w-100 text-center pt-5">
+                            <h2 class="text-info">No avatar currently</h2>
+                        </div>
+                    <%
+                }
+                
+                while(rs.next()){   
+            %>
+                    <div class="card home-card-item mt-5" style="width: 18rem">
+                        <a href="avatar-detail.jsp?avatarId=<%= rs.getInt("AvatarId")%>">
+                            <img src="<%= rs.getString("AvatarImageURL")%>" class="card-img-top"
+                            alt="Avatar_<%= rs.getInt("AvatarId")%>">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <h5 class="card-title"><%= rs.getString("AvatarPrice")%> coins</h5>
+                            </div>
+                        </a>
+                    </div>
+            <% 
+                } 
+            %>
+      </div>
+    </div>
 </section>
 <%@ include file="footer.html" %> 

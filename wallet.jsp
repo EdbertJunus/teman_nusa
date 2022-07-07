@@ -29,7 +29,16 @@
         <%
             query = String.format("SELECT * FROM ms_transaction T LEFT JOIN ms_transaction_detail TD ON T.TransactionId = TD.TransactionId WHERE T.UserId = (%d)", UserId);
             rs = con.executeQuery(query);
-            int num=0; 
+            int num=0;
+
+            if(!rs.isBeforeFirst()){
+                %>
+                    <div class="w-100 text-center pt-5">
+                        <h2 class="text-info">No Transactions currently</h2>
+                    </div>
+                <%
+            }else{
+
         %>
         <div class="table-wrapper">
             <table class="table">
@@ -61,6 +70,9 @@
                 </tbody>
             </table>
         </div>
+        <%
+            }
+        %>
     </div>
 </section>
 <%@ include file="footer.html" %> 

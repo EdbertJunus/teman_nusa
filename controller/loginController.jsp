@@ -8,7 +8,6 @@
     Connect con = Connect.getConnection();
     String query = String.format("SELECT * FROM ms_user WHERE UserEmail = ('%s')", UserEmail);
     ResultSet rs = con.executeQuery(query);
-    //ADD EMAIL VALIDATION
     
     if(UserEmail.length() == 0){
         response.sendRedirect("../login.jsp?err=Email must be filled");

@@ -19,11 +19,15 @@
     String UserHandphone = (String)session.getAttribute("UserHandphone");
     String UserPassword = (String)session.getAttribute("UserPassword");
 
+    String[] imageArr = new String[] {"beruang.jpg", "panda.jpg", "whitebear.jpg"};
+    Integer imageIndex = new Random().nextInt((3-1)+1) + 1;
+    String randomImageProfile = imageArr[imageIndex];
+
     Integer surplus = payment - price;
 
     Connect con = Connect.getConnection();
     //Insert User
-    String query_insert_user = String.format("INSERT INTO ms_user (UserFullName, UserGender, UserLinkedIn, UserHandphone, UserRegisterPrice, UserEmail, UserPassword, UserWalletBalance, UserAccountType, UserProfile) VALUES ('%s', '%s', '%s', '%s', %d, '%s', '%s', %d, '%s', '%s')", UserFullName, UserGender, UserLinkedIn, UserHandphone, price, UserEmail, UserPassword, surplus+100, "Public", "beruang.jpg");
+    String query_insert_user = String.format("INSERT INTO ms_user (UserFullName, UserGender, UserLinkedIn, UserHandphone, UserRegisterPrice, UserEmail, UserPassword, UserWalletBalance, UserAccountType, UserProfile) VALUES ('%s', '%s', '%s', '%s', %d, '%s', '%s', %d, '%s', '%s')", UserFullName, UserGender, UserLinkedIn, UserHandphone, price, UserEmail, UserPassword, surplus+100, "Public", randomImageProfile);
     ResultSet st = con.executeUpdate(query_insert_user).getGeneratedKeys();
     st.next();
     int UserId = st.getInt(1);

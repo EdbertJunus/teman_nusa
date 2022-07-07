@@ -25,7 +25,7 @@
         response.sendRedirect("../register.jsp?err=Full Name must minimal contain 3 characters");
         return;
     }
-    //ADD EMAIL VALIDATION
+    
     if(UserEmail.length() == 0){
         response.sendRedirect("../register.jsp?err=Email must be filled");
         return;
