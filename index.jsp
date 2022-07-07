@@ -46,18 +46,6 @@
       if(jobQuery.length() != 0){
         query += " AND " + jobQuery;
       }
-      /*else {
-        if(genderQuery.length() != 0){
-          query += " WHERE " + genderQuery;
-        }
-        if(jobQuery.length() != 0){
-          if(query.contains("WHERE")){
-            query += " AND " + jobQuery;
-          }else{
-            query += " WHERE " + jobQuery;
-          }
-        }
-      }*/
 
       query += " GROUP BY U.UserId"; 
       rs = con.executeQuery(query); 

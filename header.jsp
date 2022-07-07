@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/register-style.css" />
     <link rel="stylesheet" href="css/home-style.css" />
     <link rel="stylesheet" href="css/user-style.css" />
+    <link rel="stylesheet" href="css/avatar-style.css" />
   </head>
   <body>
     <%
@@ -42,7 +43,7 @@
             <a class="nav-link" href="wishlist.jsp">WishList</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Avatar Shop</a>
+            <a class="nav-link" href="avatar-shop.jsp">Avatar Shop</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Collection Angels</a>

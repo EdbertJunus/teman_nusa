@@ -16,7 +16,6 @@
         con.executeUpdate(query); 
     }
  
-    
 
     response.sendRedirect("../user-detail.jsp?userId="+FavoritedUserId+"");
 

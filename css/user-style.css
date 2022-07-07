@@ -24,11 +24,11 @@
   cursor: pointer;
 }
 
-.warning-msg {
+.confirmation-msg {
   display: none;
   margin-top: 1rem;
 }
 
-.warning-msg.active {
+.confirmation-msg.active {
   display: block;
 }

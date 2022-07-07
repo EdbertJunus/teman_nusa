@@ -95,7 +95,7 @@
             <div class="form-group row">
                 <div class="col-12 d-flex flex-column justify-content-end">
                     <button type="button" id="chg-acc-btn" class="btn btn-primary w-auto">Change Account Type</button>
-                    <div class="warning-msg" id="warning-msg">
+                    <div class="confirmation-msg" id="confirmation-msg">
                         <p class="text-success">Current Wallet Balance: <%= UserWallet%></p>
                         <%
                             if(UserWallet > accountPrice){
@@ -106,7 +106,7 @@
                         <%
                             }else{
                         %>
-                            <p class="text-warning">You have not enough money please top up</p>
+                            <p class="text-warning"><a href="wallet.jsp">You have not enough money please top up </a></p>
                         <%
                             }
                         %>

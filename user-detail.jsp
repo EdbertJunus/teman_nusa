@@ -13,6 +13,9 @@
         response.sendRedirect("index.jsp"); 
         return; 
     }
+    //Return two row if both gives thumbs up
+    // SELECT * FROM ms_wishlist WHERE (UserId = 2 OR UserId = 4) AND (FavoritedUserId = 4 OR FavoritedUserId = 2);
+
     
 %>
 <section class="container content">

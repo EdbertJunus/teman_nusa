@@ -1,0 +1,15 @@
+.avatar-detail {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.avatar-detail-info {
+  padding-top: 2rem;
+  padding-left: 5rem;
+}
+
+.avatar-detail-info > .btn {
+  margin-top: 2rem;
+}
