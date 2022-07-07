@@ -13,3 +13,7 @@
 .avatar-detail-info > .btn {
   margin-top: 2rem;
 }
+
+.avatar-detail > img {
+  height: fit-content;
+}
