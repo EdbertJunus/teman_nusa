@@ -24,5 +24,43 @@
             <a class="btn btn-success btn-lg mb-2" href="controller/topUpController.jsp?balance=<%= UserWallet+100%>&id=<%= UserId%>"  role="button">Top Up Now</a>
         </div>
     </div>
+    <div class="container-fluid transaction-info">
+        <h5 class="w-100 text-center mb-5"> My Transaction Info</h5>
+        <%
+            query = String.format("SELECT * FROM ms_transaction T LEFT JOIN ms_transaction_detail TD ON T.TransactionId = TD.TransactionId WHERE T.UserId = (%d)", UserId);
+            rs = con.executeQuery(query);
+            int num=0; 
+        %>
+        <div class="table-wrapper">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Transaction Type</th>
+                        <th scope="col">Transaction Date</th>
+                        <th scope="col">Transaction Price</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                        String imageUrl = "";
+                        while(rs.next()){
+                            imageUrl = rs.getString("TransactionImageURL");
+                    %>
+                        <tr>
+                            <th scope="row"><%= num+=1%></th>
+                            <td><%= rs.getString("TransactionType")%></td>
+                            <td><%= rs.getString("TransactionDate")%></td>
+                            <td><%= rs.getString("TransactionItemPrice")%></td>
+                            <td><%= (imageUrl == null ? "-" : "<a href=avatar-detail.jsp?avatarId="+rs.getString("TransactionItemName")+">Click</a>")%></td>
+                        </tr>
+                    <%
+                        }
+                    %>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </section>
 <%@ include file="footer.html" %> 
