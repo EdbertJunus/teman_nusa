@@ -20,7 +20,7 @@
     String UserPassword = (String)session.getAttribute("UserPassword");
 
     String[] imageArr = new String[] {"beruang.jpg", "panda.jpg", "whitebear.jpg"};
-    Integer imageIndex = new Random().nextInt((3-1)+1) + 1;
+    Integer imageIndex = new Random().nextInt(3);
     String randomImageProfile = imageArr[imageIndex];
 
     Integer surplus = payment - price;
