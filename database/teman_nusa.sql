@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2022 at 06:35 PM
+-- Generation Time: Jul 10, 2022 at 04:46 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -56,6 +56,19 @@ CREATE TABLE `ms_chat` (
   `ChatContent` text NOT NULL,
   `ChatDateTime` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ms_chat`
+--
+
+INSERT INTO `ms_chat` (`ChatId`, `SenderId`, `ReceiverId`, `ChatContent`, `ChatDateTime`) VALUES
+(5, 4, 5, 'Hello Bro', '2022-07-08'),
+(6, 5, 7, 'Hallo Edbet', '2022-07-10'),
+(7, 5, 7, 'Mau main game gak ?\r\n', '2022-07-10'),
+(8, 7, 5, 'Ohh Ayo\r\n', '2022-07-10'),
+(9, 7, 5, 'bntr ya, toilet', '2022-07-10'),
+(10, 5, 8, 'Hallo', '2022-07-10'),
+(11, 8, 5, 'Hallo Juga', '2022-07-10');
 
 -- --------------------------------------------------------
 
@@ -128,7 +141,52 @@ INSERT INTO `ms_transaction` (`TransactionId`, `UserId`, `TransactionDate`, `Tra
 (30, 4, '2022-07-07', 'Top Up Coin'),
 (31, 4, '2022-07-07', 'Top Up Coin'),
 (32, 4, '2022-07-07', 'Avatar'),
-(33, 4, '2022-07-07', 'Avatar');
+(33, 4, '2022-07-07', 'Avatar'),
+(34, 5, '2022-07-08', 'Avatar'),
+(35, 4, '2022-07-08', 'Change Account Visibility'),
+(36, 6, '2022-07-08', 'Top Up Coin'),
+(37, 6, '2022-07-08', 'Top Up Coin'),
+(38, 6, '2022-07-08', 'Top Up Coin'),
+(39, 6, '2022-07-08', 'Top Up Coin'),
+(40, 6, '2022-07-08', 'Top Up Coin'),
+(41, 6, '2022-07-08', 'Top Up Coin'),
+(42, 6, '2022-07-08', 'Top Up Coin'),
+(43, 6, '2022-07-08', 'Top Up Coin'),
+(44, 6, '2022-07-08', 'Top Up Coin'),
+(45, 6, '2022-07-08', 'Top Up Coin'),
+(46, 6, '2022-07-08', 'Top Up Coin'),
+(47, 6, '2022-07-08', 'Top Up Coin'),
+(48, 6, '2022-07-08', 'Top Up Coin'),
+(49, 6, '2022-07-08', 'Top Up Coin'),
+(50, 6, '2022-07-08', 'Top Up Coin'),
+(51, 6, '2022-07-08', 'Top Up Coin'),
+(52, 6, '2022-07-08', 'Top Up Coin'),
+(53, 6, '2022-07-08', 'Top Up Coin'),
+(54, 6, '2022-07-08', 'Top Up Coin'),
+(55, 6, '2022-07-08', 'Top Up Coin'),
+(56, 6, '2022-07-08', 'Top Up Coin'),
+(57, 6, '2022-07-08', 'Top Up Coin'),
+(58, 6, '2022-07-08', 'Top Up Coin'),
+(59, 6, '2022-07-08', 'Top Up Coin'),
+(60, 6, '2022-07-08', 'Top Up Coin'),
+(61, 6, '2022-07-08', 'Top Up Coin'),
+(62, 6, '2022-07-08', 'Top Up Coin'),
+(63, 6, '2022-07-08', 'Top Up Coin'),
+(64, 6, '2022-07-08', 'Top Up Coin'),
+(65, 6, '2022-07-08', 'Top Up Coin'),
+(66, 6, '2022-07-08', 'Top Up Coin'),
+(67, 6, '2022-07-08', 'Top Up Coin'),
+(68, 6, '2022-07-08', 'Top Up Coin'),
+(69, 6, '2022-07-08', 'Top Up Coin'),
+(70, 6, '2022-07-08', 'Top Up Coin'),
+(71, 6, '2022-07-08', 'Avatar'),
+(72, 8, '2022-07-10', 'Top Up Coin'),
+(73, 8, '2022-07-10', 'Top Up Coin'),
+(74, 8, '2022-07-10', 'Avatar'),
+(75, 8, '2022-07-10', 'Avatar'),
+(76, 8, '2022-07-10', 'Avatar'),
+(77, 8, '2022-07-10', 'Change Account Visibility'),
+(78, 8, '2022-07-10', 'Change Account Visibility');
 
 -- --------------------------------------------------------
 
@@ -176,7 +234,47 @@ INSERT INTO `ms_transaction_detail` (`TransactionDetailId`, `TransactionId`, `Tr
 (28, 30, 'Top Up Coin', NULL, 100),
 (29, 31, 'Top Up Coin', NULL, 100),
 (30, 32, '3', 'https://i.pravatar.cc/300?u=avatar3', 500),
-(31, 33, '3', 'https://i.pravatar.cc/300?u=avatar3', 500);
+(31, 33, '3', 'https://i.pravatar.cc/300?u=avatar3', 500),
+(32, 34, '4', 'https://i.pravatar.cc/300?u=avatar4', 2500),
+(33, 35, 'Public', NULL, 5),
+(34, 36, 'Top Up Coin', NULL, 100),
+(35, 37, 'Top Up Coin', NULL, 100),
+(36, 38, 'Top Up Coin', NULL, 100),
+(37, 39, 'Top Up Coin', NULL, 100),
+(38, 40, 'Top Up Coin', NULL, 100),
+(39, 41, 'Top Up Coin', NULL, 100),
+(40, 42, 'Top Up Coin', NULL, 100),
+(41, 43, 'Top Up Coin', NULL, 100),
+(42, 44, 'Top Up Coin', NULL, 100),
+(43, 45, 'Top Up Coin', NULL, 100),
+(44, 47, 'Top Up Coin', NULL, 100),
+(45, 48, 'Top Up Coin', NULL, 100),
+(46, 49, 'Top Up Coin', NULL, 100),
+(47, 52, 'Top Up Coin', NULL, 100),
+(48, 53, 'Top Up Coin', NULL, 100),
+(49, 54, 'Top Up Coin', NULL, 100),
+(50, 56, 'Top Up Coin', NULL, 100),
+(51, 57, 'Top Up Coin', NULL, 100),
+(52, 58, 'Top Up Coin', NULL, 100),
+(53, 59, 'Top Up Coin', NULL, 100),
+(54, 60, 'Top Up Coin', NULL, 100),
+(55, 61, 'Top Up Coin', NULL, 100),
+(56, 63, 'Top Up Coin', NULL, 100),
+(57, 64, 'Top Up Coin', NULL, 100),
+(58, 65, 'Top Up Coin', NULL, 100),
+(59, 66, 'Top Up Coin', NULL, 100),
+(60, 67, 'Top Up Coin', NULL, 100),
+(61, 68, 'Top Up Coin', NULL, 100),
+(62, 69, 'Top Up Coin', NULL, 100),
+(63, 70, 'Top Up Coin', NULL, 100),
+(64, 71, '4', 'https://i.pravatar.cc/300?u=avatar4', 2500),
+(65, 72, 'Top Up Coin', NULL, 100),
+(66, 73, 'Top Up Coin', NULL, 100),
+(67, 74, '1', 'https://i.pravatar.cc/300?u=avatar1', 50),
+(68, 75, '3', 'https://i.pravatar.cc/300?u=avatar3', 500),
+(69, 76, '4', 'https://i.pravatar.cc/300?u=avatar4', 2500),
+(70, 77, 'Private', NULL, 50),
+(71, 78, 'Public', NULL, 5);
 
 -- --------------------------------------------------------
 
@@ -203,9 +301,11 @@ CREATE TABLE `ms_user` (
 --
 
 INSERT INTO `ms_user` (`UserId`, `UserFullName`, `UserGender`, `UserLinkedIn`, `UserHandphone`, `UserRegisterPrice`, `UserEmail`, `UserPassword`, `UserWalletBalance`, `UserAccountType`, `UserProfile`) VALUES
-(4, 'Nael', 'Female', 'https://www.linkedin.com/in/naeljeff', '081212345213', 119383, 'naelj15@gmail.com', 'asdasd123', 240, 'Private', 'beruang.jpg'),
-(5, 'Kevin Ichi No Kata', 'Female', 'https://www.linkedin.com/in/kevintan', '12345678910', 110725, 'demonslayer@gmail.com', 'asdasd123', 9475, 'Public', 'beruang.jpg'),
-(6, 'Edbert', 'Male', 'https://www.linkedin.com/in/edbertyang', '081260521234', 100885, 'edbertyang88@gmail.com', 'asdasd123', 100, 'Public', 'whitebear.jpg');
+(4, 'Nael', 'Female', 'https://www.linkedin.com/in/naeljeff', '081212345213', 119383, 'naelj15@gmail.com', 'asdasd123', 235, 'Public', 'beruang.jpg'),
+(5, 'Kevin Ichi No Kata', 'Female', 'https://www.linkedin.com/in/kevintan', '12345678910', 110725, 'demonslayer@gmail.com', 'asdasd123', 6975, 'Public', 'beruang.jpg'),
+(6, 'Edbert', 'Male', 'https://www.linkedin.com/in/edbertyang', '081260521234', 100885, 'edbertyang88@gmail.com', 'asdasd123', 100, 'Public', 'whitebear.jpg'),
+(7, 'Edbert Junus', 'Male', 'https://www.linkedin.com/in/edbertyang', '812605583388', 120289, 'edbert002@binus.ac.id', 'asdasd123', 4811, 'Public', 'beruang.jpg'),
+(8, 'Andi', 'Male', 'https://www.linkedin.com/in/edbert', '081260521212', 104596, 'andi@gmail.com', 'asdasd123', 17599, 'Public', 'panda.jpg');
 
 -- --------------------------------------------------------
 
@@ -225,12 +325,17 @@ CREATE TABLE `ms_user_avatar_collection` (
 --
 
 INSERT INTO `ms_user_avatar_collection` (`AvatarCollectionId`, `UserId`, `AvatarId`, `SenderUserId`) VALUES
-(9, 5, 3, 4),
-(10, 5, 1, 4),
 (12, 6, 1, 4),
 (13, 4, 1, NULL),
 (15, 6, 3, 4),
-(16, 4, 3, NULL);
+(16, 4, 3, NULL),
+(17, 5, 4, NULL),
+(18, 6, 4, NULL),
+(19, 8, 1, NULL),
+(20, 8, 3, NULL),
+(22, 4, 4, 8),
+(23, 7, 1, 5),
+(24, 7, 3, 5);
 
 -- --------------------------------------------------------
 
@@ -258,7 +363,13 @@ INSERT INTO `ms_user_chosen_job` (`ChosenJobId`, `UserId`, `JobTypeId`) VALUES
 (7, 5, 14),
 (8, 6, 6),
 (9, 6, 7),
-(10, 6, 11);
+(10, 6, 11),
+(11, 7, 6),
+(12, 7, 10),
+(13, 7, 14),
+(14, 8, 7),
+(15, 8, 11),
+(16, 8, 14);
 
 -- --------------------------------------------------------
 
@@ -277,7 +388,15 @@ CREATE TABLE `ms_wishlist` (
 --
 
 INSERT INTO `ms_wishlist` (`WishListId`, `UserId`, `FavoritedUserId`) VALUES
-(8, 4, 3);
+(8, 4, 3),
+(12, 4, 5),
+(13, 5, 4),
+(14, 5, 6),
+(15, 6, 4),
+(16, 8, 5),
+(17, 7, 5),
+(18, 5, 7),
+(19, 5, 8);
 
 --
 -- Indexes for dumped tables
@@ -360,7 +479,7 @@ ALTER TABLE `ms_avatar`
 -- AUTO_INCREMENT for table `ms_chat`
 --
 ALTER TABLE `ms_chat`
-  MODIFY `ChatId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ChatId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `ms_job_type`
@@ -372,37 +491,37 @@ ALTER TABLE `ms_job_type`
 -- AUTO_INCREMENT for table `ms_transaction`
 --
 ALTER TABLE `ms_transaction`
-  MODIFY `TransactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `TransactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `ms_transaction_detail`
 --
 ALTER TABLE `ms_transaction_detail`
-  MODIFY `TransactionDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `TransactionDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `ms_user`
 --
 ALTER TABLE `ms_user`
-  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `ms_user_avatar_collection`
 --
 ALTER TABLE `ms_user_avatar_collection`
-  MODIFY `AvatarCollectionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `AvatarCollectionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `ms_user_chosen_job`
 --
 ALTER TABLE `ms_user_chosen_job`
-  MODIFY `ChosenJobId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ChosenJobId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `ms_wishlist`
 --
 ALTER TABLE `ms_wishlist`
-  MODIFY `WishListId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `WishListId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
